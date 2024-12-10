@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WindRanger Token (WRT)</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Web3 and WalletConnect CDNs -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/@walletconnect/web3-provider@1.8.0/dist/umd/index.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Application Scripts -->
+    <script type="module" src="config.js"></script>
+    <script type="module" src="services/blockchain.service.js"></script>
+    <script type="module" src="services/ui.service.js"></script>
+    <script type="module" src="services/chart.service.js"></script>
+    <script type="module" src="app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WindRanger Token (WRT)</h1>
+            <div class="wallet-info">
+                <div class="wallet-controls">
+                    <select id="wallet-selector" class="select-dropdown">
+                        <option value="" disabled selected>Select Wallet</option>
+                    </select>
+                    <button id="connect-wallet" class="connect-button" disabled>Connect</button>
+                    <button id="disconnect-wallet" class="disconnect-button" style="display: none;">Disconnect</button>
+                </div>
+                <select id="network-selector" class="select-dropdown" style="display: none;">
+                    <option value="" disabled selected>Select Network</option>
+                </select>
+                <span id="wallet-address"></span>
+            </div>
+        </header>
+
+        <div class="token-info">
+            <div class="info-item">
+                <h3>Token Price</h3>
+                <p id="token-price">0 ETH</p>
+                <small>Current token price</small>
+            </div>
+            <div class="info-item">
+                <h3>Contract Balance</h3>
+                <p id="contract-balance">0 ETH</p>
+                <small>Available liquidity</small>
+            </div>
+        </div>
+
+        <div class="chart-section">
+            <div class="chart-container">
+                <h2>WRT Price History</h2>
+                <canvas id="price-chart"></canvas>
+            </div>
+        </div>
+
+        <div id="wallet-section" class="wallet-section" style="display: none;">
+            <div class="balances">
+                <div class="balance-item">
+                    <h3>Balance</h3>
+                    <p id="eth-balance">0 ETH</p>
+                </div>
+                <div class="balance-item">
+                    <h3>WRT Balance</h3>
+                    <p id="token-balance">0 WRT</p>
+                </div>
+            </div>
+
+            <div class="network-actions">
+                <button id="faucet-button" class="faucet-button" style="display: none;">
+                    Request Test Tokens
+                </button>
+            </div>
+
+            <div class="trading-section">
+                <div class="trade-box">
+                    <h2>Buy Tokens</h2>
+                    <div class="input-group">
+                        <input type="number" id="buy-amount" placeholder="Amount in ETH" step="0.001" min="0" disabled>
+                        <button id="buy-tokens" disabled>Buy</button>
+                    </div>
+                    <p id="buy-estimate" class="estimate"></p>
+                </div>
+
+                <div class="trade-box">
+                    <h2>Sell Tokens</h2>
+                    <div class="input-group">
+                        <input type="number" id="sell-amount" placeholder="Amount in WRT" step="0.001" min="0" disabled>
+                        <button id="sell-tokens" disabled>Sell</button>
+                    </div>
+                    <p id="sell-estimate" class="estimate"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="transactions-section">
+            <h2>Recent Transactions</h2>
+            <div class="transactions-container">
+                <div class="transactions-header">
+                    <span>Type</span>
+                    <span>Amount</span>
+                    <span>Price</span>
+                    <span>Total</span>
+                    <span>Address</span>
+                    <span>Time</span>
+                </div>
+                <div id="transactions-list" class="transactions-list">
+                    <!-- Transactions will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <div id="notification" class="notification"></div>
+    </div>
+</body>
+</html>

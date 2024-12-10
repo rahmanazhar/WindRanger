@@ -1,0 +1,512 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+    --warning-color: #f1c40f;
+    --background-color: #f5f6fa;
+    --text-color: #2c3e50;
+    --border-color: #dcdde1;
+    --buy-color: #2ecc71;
+    --sell-color: #e74c3c;
+    --burn-color: #e67e22;
+    --stake-color: #9b59b6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2em;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.wallet-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.wallet-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.select-dropdown {
+    padding: 8px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: white;
+    color: var(--text-color);
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    min-width: 150px;
+}
+
+.select-dropdown:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+.select-dropdown option {
+    padding: 8px;
+}
+
+.connect-button {
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.connect-button:hover {
+    background-color: #27ae60;
+}
+
+.disconnect-button {
+    background-color: var(--error-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.disconnect-button:hover {
+    background-color: #c0392b;
+}
+
+#wallet-address {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+.token-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.info-item {
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--background-color);
+}
+
+.info-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.info-item p {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 8px;
+}
+
+.info-item small {
+    display: block;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.balances {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.balance-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.balance-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.balance-item p {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.chart-section {
+    margin-bottom: 30px;
+}
+
+.chart-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 400px !important;
+}
+
+.network-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.faucet-button {
+    background-color: var(--warning-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.faucet-button:hover {
+    background-color: #f39c12;
+}
+
+.trading-section,
+.staking-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.trade-box,
+.stake-box {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+input[type="number"] {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+input[type="number"]:disabled {
+    background-color: #f8f9fa;
+    cursor: not-allowed;
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.stake-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+#claim-rewards {
+    background-color: var(--success-color);
+}
+
+#claim-rewards:hover:not(:disabled) {
+    background-color: #27ae60;
+}
+
+#unstake-tokens {
+    background-color: var(--stake-color);
+}
+
+#unstake-tokens:hover:not(:disabled) {
+    background-color: #8e44ad;
+}
+
+.unlock-timer {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: var(--stake-color);
+}
+
+.stake-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    color: var(--stake-color);
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.estimate {
+    color: var(--secondary-color);
+    font-size: 0.9em;
+    text-align: center;
+    min-height: 20px;
+}
+
+.burn-notice,
+.price-notice {
+    margin-top: 10px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.burn-notice {
+    color: var(--burn-color);
+    font-weight: bold;
+}
+
+.price-notice {
+    color: var(--secondary-color);
+}
+
+.transactions-section {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.transactions-container {
+    overflow-x: auto;
+}
+
+.transactions-header {
+    display: grid;
+    grid-template-columns: 0.8fr 1fr 1fr 1fr 2fr 1fr;
+    padding: 15px;
+    background-color: var(--background-color);
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.transactions-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.transaction-item {
+    display: grid;
+    grid-template-columns: 0.8fr 1fr 1fr 1fr 2fr 1fr;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+.transaction-item:hover {
+    background-color: var(--background-color);
+}
+
+.transaction-type {
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.transaction-type.buy {
+    background-color: var(--buy-color);
+    color: white;
+}
+
+.transaction-type.sell {
+    background-color: var(--sell-color);
+    color: white;
+}
+
+.transaction-type.burn {
+    background-color: var(--burn-color);
+    color: white;
+}
+
+.transaction-type.stake {
+    background-color: var(--stake-color);
+    color: white;
+}
+
+.transaction-type.unstake {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.transaction-type.claim {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.transaction-address {
+    font-family: monospace;
+}
+
+.notification {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    transition: bottom 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.notification.show {
+    bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .wallet-info {
+        align-items: center;
+        width: 100%;
+    }
+
+    .wallet-controls {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .select-dropdown {
+        width: 100%;
+    }
+
+    .connect-button,
+    .disconnect-button {
+        width: 100%;
+    }
+
+    .trading-section,
+    .staking-section {
+        grid-template-columns: 1fr;
+    }
+
+    .balances,
+    .token-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .transactions-header,
+    .transaction-item {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .transactions-header span:nth-child(n+3),
+    .transaction-item > *:nth-child(n+3) {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .balances,
+    .token-info {
+        grid-template-columns: 1fr;
+    }
+}
